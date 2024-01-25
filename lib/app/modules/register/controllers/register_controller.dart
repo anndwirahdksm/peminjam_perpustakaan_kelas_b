@@ -33,7 +33,7 @@ class RegisterController extends GetxController {
     super.onClose();
   }
 
-  post() async{
+  registerpost() async{
     loading(true);
     try{
       FocusScope.of(Get.context!).unfocus();
@@ -43,14 +43,12 @@ class RegisterController extends GetxController {
             data: {
               "nama": namaController.text.toString(),
               "username": usernameController.text.toString(),
-              "telp": telpController.toString(),
-              "alamat": alamatController.toString(),
-              "password": passwordController.toString(),
-    }
-        );
+              "telp": telpController.text.toString(),
+              "alamat": alamatController.text.toString(),
+              "password": passwordController.text.toString(),
+            });
         if(response.statusCode == 201){
-
-          Get.offAllNamed(Routes.HOME);
+          Get.offAllNamed(Routes.LOGIN);
         }else{
           Get.snackbar("Sorry", "Login Gagal", backgroundColor: Colors.orange);
         }

@@ -32,7 +32,7 @@ class RegisterView extends GetView<RegisterController> {
                     controller: controller.usernameController,
                     decoration: InputDecoration(hintText: "Maukkan username"),
                     validator: (value) {
-                      if (value!.length <5) {
+                      if (value!.isEmpty) {
                         return "Username tidak boleh kosong";
                       }
                       return null;
@@ -42,7 +42,7 @@ class RegisterView extends GetView<RegisterController> {
                     controller: controller.telpController,
                     decoration: InputDecoration(hintText: "Maukkan telpon"),
                     validator: (value) {
-                      if (value!.length <5) {
+                      if (value!.isEmpty) {
                         return "Telpon tidak boleh kosong";
                       }
                       return null;
@@ -62,7 +62,7 @@ class RegisterView extends GetView<RegisterController> {
                     controller: controller.passwordController,
                     decoration: InputDecoration(hintText: "Maukkan password"),
                     validator: (value) {
-                      if (value!.length <4) {
+                      if (value!.isEmpty) {
                         return "Password tidak boleh kosong";
                       }
                       return null;
@@ -71,7 +71,7 @@ class RegisterView extends GetView<RegisterController> {
                 Obx(() => controller.loading.value?
                 CircularProgressIndicator():
                 ElevatedButton(onPressed: (){
-                  controller.post();
+                  controller.registerpost();
                 }, child: Text("Register"),
                 )
                 )
